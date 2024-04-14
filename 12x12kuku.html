@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multiplication Table</h1>
+    <table id="multiplication-table"></table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // テーブル要素を取得
+            var table = document.getElementById("multiplication-table");
+
+            // 表を生成
+            for (var i = 0; i <= 12; i++) {
+                // 行を作成
+                var row = document.createElement("tr");
+
+                // 行の各セルを生成
+                for (var j = 0; j <= 12; j++) {
+                    // ヘッダー行のヘッダーを作成
+                    if (i === 0 && j === 0) {
+                        var emptyCell = document.createElement("th");
+                        row.appendChild(emptyCell);
+                    } else if (i === 0) { // 上部のヘッダーを作成
+                        var header = document.createElement("th");
+                        header.textContent = j;
+                        row.appendChild(header);
+                    } else if (j === 0) { // 左側のヘッダーを作成
+                        var header = document.createElement("th");
+                        header.textContent = i;
+                        row.appendChild(header);
+                    } else { // 九九の値を計算してセルを作成
+                        var cell = document.createElement("td");
+                        cell.textContent = i * j;
+                        row.appendChild(cell);
+                    }
+                }
+
+                // 行をテーブルに追加
+                table.appendChild(row);
+            }
+        });
+    </script>
+</body>
+</html>
